@@ -15,6 +15,8 @@ import com.microsoft.appcenter.AppCenter;
 import com.microsoft.appcenter.analytics.Analytics;
 import com.microsoft.appcenter.crashes.Crashes;
 import com.microsoft.appcenter.distribute.Distribute;
+import com.microsoft.appcenter.AppCenter;
+
 
 
 public class MainActivity extends AppCompatActivity {
@@ -34,9 +36,12 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        AppCenter.start(getApplication(), "07b69955-a1dd-4a3a-9b33-cfdd85fac5a9", Analytics.class, Crashes.class);
+        
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_root);
-
+        
         // Initialize SDK
         if (!BuildConfig.APPCENTER_APP_SECRET.equals("")) {
             // Use APPCENTER_APP_SECRET environment variable if it exists
